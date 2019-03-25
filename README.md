@@ -1,4 +1,4 @@
-# Web Visualization Dashboard (Latitude)
+    # Web Visualization Dashboard (Latitude)
 
 A dashboard to visualize weather data
 

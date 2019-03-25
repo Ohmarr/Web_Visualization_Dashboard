@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+                                                  BREAKPOINTS
+       | prefix: | col-xs- | col-sm- | col-md- | col-lg- | col-xl- | 
+       | Pixel:  |   <576  |   >576  |   >768  |   >992  |   >1200 |
+| container max: |   None  |  540px  |  720px  |  960px  |  1140px |
+
+column gutter width: 30px (15px per side)
+
+
+-->
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+        <title>Dataset</title>
+
+        <!-- bootstrap CSS before all others -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/style.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+<body>
+        <!-- CONTAINERS: Fundamental layout elements required for grids; width can be responsive, fixed-width, fluid-width (container-fluid)
+                - allow for centering & padding of contents;
+                - Rows MUST be wrappers/parents of columns; horizantal padding between cols = gutter - can remove w/ .no-gutters
+                - breakpoints apply to size & all above it; 
+                        - @media-queries are used to depend website feature scaling on viewing device; applies to minimum resulotion & all above it i.e. resolution 
+                
+                -->
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="index.html">Latitude</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse navbar-right" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+
+                                <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                                role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                Plots
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                <a class="dropdown-item" href="maxTemp.html">Max Temperature</a>
+                                                <a class="dropdown-item" href="humidity.html">Humidity</a>
+                                                <a class="dropdown-item" href="cloudiness.html">Cloudiness</a>
+                                                <a class="dropdown-item" href="windSpeed.html">Wind Speed</a>
+                                        </div>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="comparison.html">Comparison</a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="data.html">Data</a>
+                                </li>
+                        </ul>
+                </div>
+        </nav>
+
+        <div class='container main-section'>
+                                <h2 class='latbrand'>Data</h2>
+                                <hr>
+                                <div id='table'></div>
+        </div>
+
+        <footer class='container-fluid' id="footer">
+                <hr id='last-hr'>
+                <p>&copy; The Coding Boot Camp 2019</p>
+        </footer>
+
+
+
+<script>
+
+                // Load data from hours-of-tv-watched.csv
+var csvUrl = 'https://raw.githubusercontent.com/the-Coding-Boot-Camp-at-UT/UTAUS201810DATA2/master/11_Web/Homework/Instructions/Resources/cities.csv?token=APbpvhgdYUkKX8UL5FnH-rfa5LmvFHFpks5coYh4wA%3D%3D'
+var cityData; 
+                cityData = d3.csv(csvUrl).catch() 
+                // function (error, cityData) {
+                //         if (error) return console.warn(error);
+                //         });
+                //console.log(cityData);
+                var div = d3.select('#table')
+                        .append('table')
+                        .append('tbody')
+                        .selectAll('tr')
+                        .data(cityData)
+                        .enter().append('tr')
+
+                        .selectAll('td')
+                        .data(d=>d)
+                        .enter().append('td')
+
+                        
+                
+                // var tbody = table.select("tbody");
+                // cityData.then((city) => {
+                //         var row = tbody.append("tr");
+                //         Object.entries(city).forEach(([key, value]) => {
+                //                 var cell = tbody.append("td");
+                //                 cell.text(value);
+                //         });
+                // });
+        
+
+                
+</script>
+
+        <!-- Bootstraps Js Scripts must be right before closing body tag; in order: 1) jquery, 2) popper, 3)Bootstrap -->
+        <!--1)jquery-->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous">
+                </script>
+        <!--2)popper-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous">
+                </script>
+        <!--3)Bootstrap Js-->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous">
+                </script>
+        <script src='https://raw.githubusercontent.com/evanplaice/jquery-csv/master/src/jquery.csv.min.js'></script>
+        <script scr='https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js'></script>
+</body>
+
+</html>
