@@ -15,6 +15,10 @@ footer {
         padding: 0 10px 0 10px;
 }
 
+#tableData {
+        padding: 0 50px 0 50px;
+}
+
 .main-section {
         background-color: white;
         /* padding: top right bottom left */
@@ -72,6 +76,16 @@ footer {
 .latbrand {
         color: green;
         text-align: center;
+}
+
+.mainViz {
+        display: block;
+}
+
+.latbrand-Data {
+        color: green;
+        text-align: center;
+        padding: 15px 0 15px 0;
 }
 
 .navbar-nav {
